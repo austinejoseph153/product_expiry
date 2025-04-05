@@ -1,0 +1,187 @@
+{% extends 'frontend/base.html' %}
+{% load static i18n custom_base_tags %}
+
+{% block content %}
+<div class="crancy-table-meta mg-top-30">
+    <div class="row">
+        <div class="col-sm-12 mt-3">
+            {% for message in messages %}
+                <div class="notification {{message.tags}} fl-wrap">
+                    <p>{{ message }}</p>
+                    <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                </div>                                                
+            {% endfor %}
+        </div>
+        <div class="col-12">
+            <div>
+                <a href="{% url 'product:add_product' %}" class="crancy-btn crancy-btn__filter">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        viewBox="0 0 16 16"
+                        fill="none">
+                        <path d="M8 1V15" stroke="white" stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"/>
+                        <path d="M1 8H15" stroke="white" stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                    </svg>
+                    Add products
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if product_list|length > 0 %}
+<div class="crancy-table crancy-table--v3 mg-top-30" style="overflow-x: auto;">
+    <!-- crancy Table -->
+    <h3>Product List</h3>
+    <table id="" class="crancy-table__main crancy-table__main-v3">
+        <!-- crancy Table Head -->
+        <thead class="crancy-table__head">
+            <tr>
+                <th>
+                    Image
+                </th>
+                <th class="crancy-table__column-1 crancy-table__h1">
+                    <div class="crancy-wc__checkbox">
+                        <span>Product Name</span>
+                    </div>
+                </th>
+                <th class="crancy-table__column-1 crancy-table__h1">
+                    <div class="crancy-wc__checkbox">
+                        <span>Manufacturer</span>
+                    </div>
+                </th>
+                <th class="crancy-table__column-2 crancy-table__h2">
+                    Price
+                </th>
+                <th class="crancy-table__column-3 crancy-table__h3">
+                    Stock
+                </th>
+                <th class="crancy-table__column-4 crancy-table__h4">
+                    <div>
+                        Manufacture Date
+                    </div>
+                </th>
+                <th class="crancy-table__column-4 crancy-table__h4">
+                    <div>
+                        Expiry Date
+                    </div>
+                </th>
+                <th>
+                    <div>Status</div>
+                </th>
+                <th>
+                    <div>Actions</div>
+                </th>
+            </tr>
+        </thead>
+        <!-- crancy Table Body -->
+        <tbody class="crancy-table__body">
+            {% for product in product_list %}
+                <tr>
+                    <td>
+                        <div>
+                            <img src="{{product.image.url}}" alt="#" />
+                        </div>
+                    </td>
+                    <td class="crancy-table__column-1 crancy-table__data-1">
+                        <h4 class="crancy-table__product-title">
+                            <span>{{ product.name }}</span>
+                        </h4>
+                    </td>
+                    <td class="crancy-table__column-1 crancy-table__data-1">
+                        <div class="crancy-table__customer">
+                            <div class="crancy-wc__checkbox">
+                                <h4 class="crancy-table__product-title">
+                                    <span>{{ product.manufacturer }}</span>
+                                </h4>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="crancy-table__column-2 crancy-table__data-2">
+                        <h4 class="crancy-table__product-title">
+                            <span>&#8358 {{ product.price|floatformat:0 }}</span>
+                        </h4>
+                    </td>
+                    <td class="crancy-table__column-3 crancy-table__data-3">
+                        <h4 class="crancy-table__product-title">
+                            <span>{{ product.quantity }}</span>
+                        </h4>
+                    </td>
+                    <td class="crancy-table__column-4 crancy-table__data-4">
+                        <div class="crancy-table__product-title">
+                            <span>{{ product.maufacturing_date }}</span>
+                        </div>
+                    </td>
+                    <td class="crancy-table__column-4 crancy-table__data-4">
+                        <div class="crancy-table__product-title">
+                            <span>{{ product.expiry_date }}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="status {{product.status}}">
+                            <span>{{product.status}}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="action">
+                            <a href="{% url 'product:delete_product' pk=product.pk %}">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <!-- End crancy Table Body -->
+    </table>
+    <!-- End crancy Table -->    
+</div>
+<div class="mbp_pagination mt30 text-center">
+    <ul class="page_navigation">
+        {% if product_list.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ product_list.previous_page_number }}{% if params_with_order %}{{ params_with_order }}{% endif %}" aria-label="{% trans "Previous" %}"><span aria-hidden="true">&laquo;</span><span class="sr-only">{% trans "Previous" %}</span></a>
+            </li>
+        {% endif %}
+        {% for i in product_list.paginator.page_range %}
+            {% if product_list.number == i %}
+                <li class="page-item active"><span class="page-link">{{ i }}<span class="sr-only">(current)</span></span></li>
+            {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ i }}{% if params_with_order %}{{ params_with_order }}{% endif %}">{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if product_list.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ product_list.next_page_number }}{% if params_with_order %}{{ params_with_order }}{% endif %}" aria-label="{% trans "Next" %}"><span aria-hidden="true">&raquo;</span><span class="sr-only">{% trans "Next" %}</span></a></li>
+        {% endif %}
+    </ul>
+</div>
+{% else %}
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    $(document).ready(function () {
+        $("#crancy-table__main").DataTable({
+          searching: false, // Enable search functionality
+          info: true,
+          lengthChange: true, // Enable the ability to change the number of records per page
+          pageLength: 8,
+          lengthMenu: [
+            [8, 14, 25, 50, -1],
+            [8, 14, 25, 50, "All"],
+          ],
+          language: {
+            paginate: {
+              next: '<i class="fas fa-angle-right"></i>',
+              previous: '<i class="fas fa-angle-left"></i>',
+            },
+            lengthMenu: "Show result: _MENU_ ", // Customize the "Show entries" text
+          },
+          dom: 'rt<"crancy-table-bottom"flp><"clear">', // Set the desired layout for the table
+        });
+    });
+  </script>
+{% endblock %}

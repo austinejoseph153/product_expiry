@@ -1,0 +1,71 @@
+{% extends 'frontend/base.html' %}
+{% load static i18n %}
+
+{% block content %}
+    <div class="row mg-top-30">
+        <div class="col-sm-12 mt-3">
+            {% for message in messages %}
+                <div class="notification {{message.tags}} fl-wrap">
+                    <p>{{ message }}</p>
+                    <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                </div>                                                
+            {% endfor %}
+        </div>
+        <div class="col-sm-12 mt-3">
+            {% if form.errors %}
+                {% if form.non_field_errors %}
+                    <div class="notification error fl-wrap">
+                        <p>{{ form.non_field_errors }}</p>
+                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="col-sm-12">
+            <div class="custom-form centered-form">
+                <h4>Add New User</h4>
+                <form action="{% url 'product:create_new_user' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">{{ form.username.label }}</label>
+                                {{ form.username }}
+                                {% if form.username.errors %}
+                                    {% for error in form.username.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">{{ form.email.label }}</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                    {% for error in form.email.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label class="form-label">{{ form.password.label }}</label>
+                                {{ form.password }}
+                                {% if form.password.errors %}
+                                    {% for error in form.password.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-12  mt-3">
+                            <button type="submit" class="submit-btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <div>
+{% endblock %}

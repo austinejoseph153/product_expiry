@@ -1,0 +1,123 @@
+[
+    {
+        "name":"Apple Juice",
+        "manufacturer":"Apple juice inc.",
+        "quantity":50,
+        "category":"beverages",
+        "price":3500,
+        "maufacturing_date":"2024-09-15",
+        "expiry_date":"2025-04-12",
+        "image":"https://i5.walmartimages.com/seo/Mott-s-100-Juice-Original-Apple-Juice-64-Fluid-Ounce-Bottle_03c64d31-9511-4cd2-9fbd-ca16aa590603.ed9f10c7fd4b6d070fb632e35d2be80a.jpeg",
+        "description":"Fresh apple juice"
+    },
+    {
+        "name":"Whole Wheat Bread",
+        "manufacturer":"whole wheat bakery",
+        "quantity":70,
+        "category":"bakery",
+        "price":1700,
+        "maufacturing_date":"2024-09-20",
+        "expiry_date":"2025-04-13",
+        "image":"https://shopmetro.ph/alabang-supermarket/wp-content/uploads/2021/03/SM9198477-2.jpg",
+        "description":"Freshly Baked whole wheat"
+    },
+    {
+        "name":"Greek yogurt",
+        "manufacturer":"yogurt inc.",
+        "quantity":20,
+        "category":"dairy",
+        "price":2500,
+        "maufacturing_date":"2024-09-27",
+        "expiry_date":"2025-04-15",
+        "image":"https://www.stonyfield.com/wp-content/uploads/2023/02/Untitled-design59-1.webp",
+        "description":"Non-fat Greek yogurt"
+    },
+    {
+        "name":"Quaker Oats",
+        "manufacturer":"Quaker oats co.",
+        "quantity":75,
+        "category":"grocery",
+        "price":2400,
+        "maufacturing_date":"2024-09-28",
+        "expiry_date":"2025-04-16",
+        "image":"https://primegrocers.ng/wp-content/uploads/2018/08/ol0.jpg",
+        "description":"old fashioned rolled oats"
+    },
+    {
+        "name":"Tropicana Orange Juice",
+        "manufacturer":"Tropicana inc.",
+        "quantity":21,
+        "category":"beverages",
+        "price":1500,
+        "maufacturing_date":"2024-10-02",
+        "expiry_date":"2025-04-17",
+        "image":"https://i5.walmartimages.com/seo/Tropicana-Pure-Premium-No-Pulp-Original-Orange-Juice-89-Oz_d055d722-d8b5-44f2-aba5-23d6dff6e610.f2e97ba1a83a578dcdbb78b77460d4d4.jpeg",
+        "description":"Freshly squeezed orange juice"
+    },
+    {
+        "name":"Kellogg's Corn Flakes",
+        "manufacturer":"Kellogg's inc.",
+        "quantity":35,
+        "category":"grocery",
+        "price":4800,
+        "maufacturing_date":"2024-10-04",
+        "expiry_date":"2025-04-18",
+        "image":"https://greenspoon.co.ke/wp-content/uploads/2024/06/Greenspoon-kelloggs-corn-flakes-1-of-1.jpg",
+        "description":"cripsy corn flakes"
+    },
+    {
+        "name":"Coca-Cola Classic",
+        "manufacturer":"The Coca-Cola Company",
+        "quantity":19,
+        "category":"beverages",
+        "price":3400,
+        "maufacturing_date":"2024-10-05",
+        "expiry_date":"2025-04-20",
+        "image":"https://www.1001spirits.com/tuotekuvat/1200x1200/Coca%20Cola%20Classic%2024x0%2C33%20l.png",
+        "description":"classic cola flavor"
+    },
+    {
+        "name":"Kit Kat Chocolate Bar",
+        "manufacturer":"Nestle USA inc.",
+        "quantity":120,
+        "category":"snacks",
+        "price":2900,
+        "maufacturing_date":"2024-10-06",
+        "expiry_date":"2025-04-22",
+        "image":"https://www.sweetsandcandy.co.uk/media/catalog/product/cache/ad201e1f2783b5fe29e123a2105d273f/k/i/kit-kat-chocolate-frosted-donut-american-sweets.jpg",
+        "description":"cripsy wafer bar covered in milk chocolate"
+    },
+    {
+        "name":"Tide Laundry Detergent",
+        "manufacturer":"Procter & Gamble co.",
+        "quantity":67,
+        "category":"Household",
+        "price":5500,
+        "maufacturing_date":"2024-10-07",
+        "expiry_date":"2025-04-23",
+        "image":"https://i5.walmartimages.com/seo/Tide-Simply-Liquid-Laundry-Detergent-Refreshing-Breeze-184-Oz_4a2f745a-f700-486b-90de-bc23c9597c76.2fc4f7ed3686954f371ad24f2dd42fea.jpeg",
+        "description":"original scent laundry detergent"
+    },
+    {
+        "name":"Lays Potato Chips",
+        "manufacturer":"Frito-Lay inc.",
+        "quantity":89,
+        "category":"snacks",
+        "price":2100,
+        "maufacturing_date":"2024-10-09",
+        "expiry_date":"2025-04-24",
+        "image":"https://cdn.gardengrocer.com/attachments/photos/high_res/4315.jpg?4175",
+        "description":"classic potato chips"
+    },
+    {
+        "name":"Gillete Razors",
+        "manufacturer":"Procter and Gamble co.",
+        "quantity":70,
+        "category":"personal care",
+        "price":800,
+        "maufacturing_date":"2024-10-12",
+        "expiry_date":"2025-04-26",
+        "image":"https://www.4sgm.com/assets/Image/Product/detailsbig/52604.jpg",
+        "description":"mach3 razors"
+    }
+]

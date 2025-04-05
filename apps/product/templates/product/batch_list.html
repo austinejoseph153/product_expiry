@@ -1,0 +1,98 @@
+{% extends 'frontend/base.html' %}
+{% load static i18n custom_base_tags %}
+
+{% block content %}
+<div class="crancy-table-meta mg-top-30">
+    <div class="row">
+        <div class="col-sm-12 mt-3">
+            {% for message in messages %}
+                <div class="notification {{message.tags}} fl-wrap">
+                    <p>{{ message }}</p>
+                    <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                </div>                                                
+            {% endfor %}
+        </div>
+        <div class="col-12">
+            <div>
+                <a href="{% url 'product:add_batch' %}" class="crancy-btn crancy-btn__filter">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        viewBox="0 0 16 16"
+                        fill="none">
+                        <path d="M8 1V15" stroke="white" stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"/>
+                        <path d="M1 8H15" stroke="white" stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"/>
+                    </svg>
+                    Add Batch
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if batch_list|length > 0 %}
+<div class="crancy-table crancy-table--v3 mg-top-30" style="overflow-x: auto;">
+    <!-- crancy Table -->
+     <h3>Batch List</h3>
+    <table id="" class="crancy-table__main crancy-table__main-v3">
+        <!-- crancy Table Head -->
+        <thead class="crancy-table__head">
+            <tr>
+                <th class="crancy-table__column-1 crancy-table__h1">
+                    <div class="crancy-wc__checkbox">
+                        <span>Batch Name</span>
+                    </div>
+                </th>
+                <th class="crancy-table__column-3 crancy-table__h3">
+                    Quantity
+                </th>
+                <th class="crancy-table__column-4 crancy-table__h4">
+                    <div>
+                        Manufacture Date
+                    </div>
+                </th>
+                <th class="crancy-table__column-4 crancy-table__h4">
+                    <div>
+                        Expiry Date
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <!-- crancy Table Body -->
+        <tbody class="crancy-table__body">
+            {% for batch in batch_list %}
+                <tr>
+                    <td class="crancy-table__column-1 crancy-table__data-1">
+                        <h4 class="crancy-table__product-title">
+                            <span>{{ batch.name }}</span>
+                        </h4>
+                    </td>
+                    <td class="crancy-table__column-3 crancy-table__data-3">
+                        <h4 class="crancy-table__product-title">
+                            <span>{{ batch.quantity }}</span>
+                        </h4>
+                    </td>
+                    <td class="crancy-table__column-4 crancy-table__data-4">
+                        <div class="crancy-table__product-title">
+                            <span>{{ batch.manufacturing_date }}</span>
+                        </div>
+                    </td>
+                    <td class="crancy-table__column-4 crancy-table__data-4">
+                        <div class="crancy-table__product-title">
+                            <span>{{ batch.expiry_date }}</span>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <!-- End crancy Table Body -->
+    </table>
+    <!-- End crancy Table -->
+</div>
+{% else %}
+
+{% endif %}
+{% endblock %}

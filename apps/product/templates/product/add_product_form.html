@@ -1,0 +1,148 @@
+{% extends 'frontend/base.html' %}
+{% load static i18n %}
+
+{% block content %}
+    <div class="row mg-top-30">
+        <div class="col-sm-12 mt-3">
+            {% for message in messages %}
+                <div class="notification {{message.tags}} fl-wrap">
+                    <p>{{ message }}</p>
+                    <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                </div>                                                
+            {% endfor %}
+        </div>
+        <div class="col-sm-12 mt-3">
+            {% if form.errors %}
+                {% if form.non_field_errors %}
+                    <div class="notification error fl-wrap">
+                        <p>{{ form.non_field_errors }}</p>
+                        <a class="notification-close" href="#"><i class="fa fa-times"></i></a>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="col-sm-12">
+            <div class="custom-form">
+                <h4>Add Product Form</h4>
+                <form action="{% url 'product:add_product' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{form.name.label}}</label>
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                    {% for error in form.name.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{form.manufacturer.label}}</label>
+                                {{ form.manufacturer }}
+                                {% if form.manufacturer.errors %}
+                                    {% for error in form.manufacturer.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{form.category.label}}</label>
+                                {{ form.category }}
+                                {% if form.category.errors %}
+                                    {% for error in form.category.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{form.quantity.label}}</label>
+                                {{ form.quantity }}
+                                {% if form.quantity.errors %}
+                                    {% for error in form.quantity.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{form.price.label}}</label>
+                                {{ form.price }}
+                                {% if form.price.errors %}
+                                    {% for error in form.price.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{form.maufacturing_date.label}}</label>
+                                {{ form.maufacturing_date }}
+                                {% if form.maufacturing_date.errors %}
+                                    {% for error in form.maufacturing_date.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{form.expiry_date.label}}</label>
+                                {{ form.expiry_date }}
+                                {% if form.expiry_date.errors %}
+                                    {% for error in form.expiry_date.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{form.image.label}}</label>
+                                {{ form.image }}
+                                {% if form.image.errors %}
+                                    {% for error in form.image.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label class="form-label">{{form.batch.label}}</label>
+                                {{ form.batch }}
+                                {% if form.batch.errors %}
+                                    {% for error in form.batch.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{form.description.label}}</label>
+                                {{ form.description }}
+                                {% if form.description.errors %}
+                                    {% for error in form.description.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-12 mt-3">
+                            <button type="submit" class="submit-btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <div>
+{% endblock %}
