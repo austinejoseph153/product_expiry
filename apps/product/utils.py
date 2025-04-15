@@ -1,12 +1,20 @@
 from .models import Product
 from django.utils import timezone
-from sms import send_sms
+from twilio.rest import Client
+from django.conf import settings
 
-def send_expiry_notifications():
-    message = "Hello, this is a reminder that the following products are about to expire:"
-    recipient = "+2349021994595"
-    send_sms(message, recipient)
-send_expiry_notifications()
+
+def send_sms(to, message):
+    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILLIO_AUTH_TOKEN)
+    message = client.messages.create(
+        body=message,
+        from_=settings.TWILLIO_FROM_NUMBER,
+        to=to
+    )
+    return message.sid
+
+# send_sms("+2349021994595","Hello, this is a reminder that the following products are about to expire <a href='http://127.0.0.1:8000/product/list/'></a>")
+
 
 def check_expired_product():
     print("checking database for expired products....")
