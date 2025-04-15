@@ -25,7 +25,7 @@ def check_expired_product():
             product.status = "expired"
             product.save()
         else:
-            if abs(product.expiry_date - product.maufacturing_date).days <= 30:
+            if abs(current_date - product.expiry_date).days <= 30:
                 product.status = "near-expired"
                 product.save()
     print("task is done")
